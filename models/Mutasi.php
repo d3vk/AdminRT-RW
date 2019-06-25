@@ -34,12 +34,11 @@ class Mutasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'no_kk', 'tanggal', 'group_lama', 'group_baru', 'approval'], 'required'],
-            [['id', 'group_lama', 'group_baru'], 'integer'],
+            [['no_kk', 'tanggal', 'group_lama', 'group_baru', 'approval'], 'required'],
             [['tanggal'], 'safe'],
+            [['group_lama', 'group_baru'], 'integer'],
             [['no_kk'], 'string', 'max' => 16],
             [['approval'], 'string', 'max' => 255],
-            [['id'], 'unique'],
             [['no_kk'], 'exist', 'skipOnError' => true, 'targetClass' => KartuKeluarga::className(), 'targetAttribute' => ['no_kk' => 'no_kk']],
             [['group_baru'], 'exist', 'skipOnError' => true, 'targetClass' => DataGroup::className(), 'targetAttribute' => ['group_baru' => 'id']],
             [['group_lama'], 'exist', 'skipOnError' => true, 'targetClass' => DataGroup::className(), 'targetAttribute' => ['group_lama' => 'id']],

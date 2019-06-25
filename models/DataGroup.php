@@ -38,11 +38,10 @@ class DataGroup extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'id_wilayah', 'no_kk', 'kepala_keluarga', 'nama_group', 'rt', 'rw'], 'required'],
-            [['id', 'rt', 'rw'], 'integer'],
+            [['id_wilayah', 'no_kk', 'kepala_keluarga', 'nama_group', 'rt', 'rw'], 'required'],
+            [['rt', 'rw'], 'integer'],
             [['id_wilayah', 'kepala_keluarga', 'nama_group'], 'string', 'max' => 255],
             [['no_kk'], 'string', 'max' => 16],
-            [['id'], 'unique'],
             [['id_wilayah'], 'exist', 'skipOnError' => true, 'targetClass' => Wilayah::className(), 'targetAttribute' => ['id_wilayah' => 'kodepos']],
             [['no_kk'], 'exist', 'skipOnError' => true, 'targetClass' => KartuKeluarga::className(), 'targetAttribute' => ['no_kk' => 'no_kk']],
             [['kepala_keluarga'], 'exist', 'skipOnError' => true, 'targetClass' => KartuKeluarga::className(), 'targetAttribute' => ['kepala_keluarga' => 'kepala_keluarga']],
