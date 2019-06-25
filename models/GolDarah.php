@@ -53,4 +53,15 @@ class GolDarah extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['gol_darah' => 'gol_darah']);
     }
+
+    public function getListGoldar()
+    {
+        $model = GolDarah::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->gol_darah] = $values->gol_darah;
+        }
+
+        return $data;
+    }
 }

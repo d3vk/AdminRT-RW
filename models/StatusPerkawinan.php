@@ -53,4 +53,15 @@ class StatusPerkawinan extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['status_perkawinan' => 'status']);
     }
+
+    public function getStatusPerkawinan()
+    {
+        $model = StatusPerkawinan::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->status] = $values->status;
+        }
+
+        return $data;
+    }
 }

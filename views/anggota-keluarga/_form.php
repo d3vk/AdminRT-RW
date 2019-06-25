@@ -2,6 +2,14 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\StatusHubungan;
+use app\models\StatusPerkawinan;
+use app\models\Wilayah;
+use app\models\JenisKelamin;
+use app\models\GolDarah;
+use app\models\Agama;
+use app\models\PendidikanTerakhir;
+use app\models\Pekerjaan;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AnggotaKeluarga */
@@ -18,23 +26,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nama_anggota')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status_hubungan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status_hubungan')->dropDownList(StatusHubungan::getStatusHub(), ["prompt" => "Pilih status hubungan"]); ?>
 
-    <?= $form->field($model, 'status_perkawinan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status_perkawinan')->dropDownList(StatusPerkawinan::getStatusPerkawinan(), ["prompt" => "Pilih status perkawinan"]); ?>
 
-    <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tempat_lahir')->dropDownList(Wilayah::getListKota(), ["prompt" => "Pilih kota kelahiran"]); ?>
 
     <?= $form->field($model, 'tanggal_lahir')->textInput() ?>
 
-    <?= $form->field($model, 'jenis_kelamin')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'jenis_kelamin')->dropDownList(JenisKelamin::getListGender(), ["prompt" => "Pilih jenis kelamin"]); ?>
 
-    <?= $form->field($model, 'gol_darah')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'gol_darah')->dropDownList(GolDarah::getListGoldar(), ["prompt" => "Pilih golongan darah"]); ?>
 
-    <?= $form->field($model, 'agama')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'agama')->dropDownList(Agama::getListAgama(), ["prompt" => "Pilih agama"]); ?>
 
-    <?= $form->field($model, 'pendidikan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pendidikan')->dropDownList(PendidikanTerakhir::getListPendidikan(), ["prompt" => "Pilih pendidikan terakhir"]); ?>
 
-    <?= $form->field($model, 'pekerjaan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pekerjaan')->dropDownList(Pekerjaan::getListPekerjaan(), ["prompt" => "Pilih pekerjaan"]); ?>
 
     <?= $form->field($model, 'nama_ibu')->textInput(['maxlength' => true]) ?>
 

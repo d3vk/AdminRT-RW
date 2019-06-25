@@ -53,4 +53,15 @@ class StatusHubungan extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['status_hubungan' => 'status']);
     }
+
+    public function getStatusHub()
+    {
+        $model = StatusHubungan::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->status] = $values->status;
+        }
+
+        return $data;
+    }
 }

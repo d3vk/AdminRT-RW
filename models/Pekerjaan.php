@@ -53,4 +53,15 @@ class Pekerjaan extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['pekerjaan' => 'pekerjaan']);
     }
+
+    public function getListPekerjaan()
+    {
+        $model = Pekerjaan::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->pekerjaan] = $values->pekerjaan;
+        }
+
+        return $data;
+    }
 }

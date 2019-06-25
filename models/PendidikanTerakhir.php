@@ -53,4 +53,15 @@ class PendidikanTerakhir extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['pendidikan' => 'pendidikan']);
     }
+
+    public function getListPendidikan()
+    {
+        $model = PendidikanTerakhir::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->pendidikan] = $values->pendidikan;
+        }
+
+        return $data;
+    }
 }

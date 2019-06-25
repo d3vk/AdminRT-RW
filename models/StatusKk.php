@@ -53,4 +53,15 @@ class StatusKk extends \yii\db\ActiveRecord
     {
         return $this->hasMany(KartuKeluarga::className(), ['status' => 'keterangan']);
     }
+
+    public function getStatusKK()
+    {
+        $model = StatusKk::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->keterangan] = $values->keterangan;
+        }
+
+        return $data;
+    }
 }

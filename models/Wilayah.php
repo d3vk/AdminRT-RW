@@ -62,4 +62,26 @@ class Wilayah extends \yii\db\ActiveRecord
     {
         return $this->hasMany(DataGroup::className(), ['id_wilayah' => 'kodepos']);
     }
+
+    public function getListKota()
+    {
+        $model = Wilayah::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->kabupaten] = $values->kabupaten;
+        }
+
+        return $data;
+    }
+
+    public function getListWilayah()
+    {
+        $model = Wilayah::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->kodepos] = $values->kodepos . " - " . $values->kelurahan . ", " . $values->kecamatan . ", " . $values->kabupaten . ", " . $values->provinsi;
+        }
+
+        return $data;
+    }
 }

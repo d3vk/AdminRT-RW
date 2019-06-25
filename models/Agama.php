@@ -53,4 +53,15 @@ class Agama extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['agama' => 'agama']);
     }
+
+    public function getListAgama()
+    {
+        $model = Agama::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->agama] = $values->agama;
+        }
+
+        return $data;
+    }
 }

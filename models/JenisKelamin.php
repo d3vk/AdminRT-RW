@@ -53,4 +53,15 @@ class JenisKelamin extends \yii\db\ActiveRecord
     {
         return $this->hasMany(AnggotaKeluarga::className(), ['jenis_kelamin' => 'jenis_kelamin']);
     }
+
+    public function getListGender()
+    {
+        $model = JenisKelamin::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->jenis_kelamin] = $values->jenis_kelamin;
+        }
+
+        return $data;
+    }
 }
