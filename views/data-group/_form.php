@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Wilayah;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\DataGroup */
@@ -12,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_wilayah')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id_wilayah')->dropDownList(Wilayah::getListWilayah(), ["prompt" => "Pilih wilayah"]) ?>
 
     <?= $form->field($model, 'no_kk')->textInput(['maxlength' => true]) ?>
 

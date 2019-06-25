@@ -73,4 +73,11 @@ class Pengguna extends \yii\db\ActiveRecord
     {
         return $this->hasOne(DataGroup::className(), ['id' => 'id_group']);
     }
+
+    public function beforeSave($insert)
+    {
+        $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+
+        return parent::beforeSave($insert);
+    }
 }

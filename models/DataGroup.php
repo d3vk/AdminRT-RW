@@ -111,4 +111,15 @@ class DataGroup extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Pengguna::className(), ['id_group' => 'id']);
     }
+
+    public function getListGroupID()
+    {
+        $model = DataGroup::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->id] = $values->id . " - " . $values->nama_group;
+        }
+
+        return $data;
+    }
 }
