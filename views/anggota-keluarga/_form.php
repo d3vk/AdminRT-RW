@@ -10,6 +10,7 @@ use app\models\GolDarah;
 use app\models\Agama;
 use app\models\PendidikanTerakhir;
 use app\models\Pekerjaan;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\AnggotaKeluarga */
@@ -32,7 +33,16 @@ use app\models\Pekerjaan;
 
     <?= $form->field($model, 'tempat_lahir')->dropDownList(Wilayah::getListKota(), ["prompt" => "Pilih kota kelahiran"]); ?>
 
-    <?= $form->field($model, 'tanggal_lahir')->textInput() ?>
+    <?= $form->field($model, 'tanggal_lahir')->widget(
+        DatePicker::classname(),
+        [
+            'options' => ['placeholder' => 'Masukkan tanggal lahir'],
+            'pluginOptions' => [
+                'autoclose' => true,
+                'format' => 'yyyy-mm-dd'
+            ]
+        ]
+    ); ?>
 
     <?= $form->field($model, 'jenis_kelamin')->dropDownList(JenisKelamin::getListGender(), ["prompt" => "Pilih jenis kelamin"]); ?>
 
