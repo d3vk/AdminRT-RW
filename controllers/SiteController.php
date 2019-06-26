@@ -139,4 +139,8 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionUserpage()
+    {
+        return $this->render('userpage');
+    }
 }
