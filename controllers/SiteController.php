@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Pengguna;
 
 class SiteController extends Controller
 {
@@ -124,5 +125,18 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionDaftar()
+    {
+        $model = new Pengguna();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index.php?r=site%2Flogin');
+        }
+
+        return $this->render('daftar', [
+            'model' => $model,
+        ]);
     }
 }
