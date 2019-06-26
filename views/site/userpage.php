@@ -5,7 +5,7 @@
 use yii\helpers\Html;
 use kartik\sidenav\SideNav;
 
-$this->title = 'Userpage';
+$this->title = 'Laman Pengguna';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">

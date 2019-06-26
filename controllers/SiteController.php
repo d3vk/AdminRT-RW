@@ -78,7 +78,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('index.php?r=site%2Fabout');
+            return $this->redirect('index.php?r=site%2Fuserpage');
         }
 
         $model->password = '';
@@ -142,5 +142,10 @@ class SiteController extends Controller
     public function actionUserpage()
     {
         return $this->render('userpage');
+    }
+
+    public function actionAdminpage()
+    {
+        return $this->render('adminpage');
     }
 }
