@@ -3,9 +3,10 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-use kartik\sidenav\SideNav;
 use yii\helpers\VarDumper;
 use yii\helpers\Url;
+use kartik\sidenav\SideNav;
+
 
 $this->title = 'Home Page';
 $this->params['breadcrumbs'][] = $this->title;
@@ -45,7 +46,12 @@ VarDumper::dump($params);
                     [
                         'url' => Url::toRoute('/pengguna'),
                         'label' => 'Manage Pengguna',
-                        'icon' => 'home'
+                        'icon' => 'user'
+                    ],
+                    [
+                        'url' => Url::toRoute('/kartu-keluarga'),
+                        'label' => 'Manage Kartu Keluarga',
+                        'icon' => 'file'
                     ],
                     [
                         'label' => 'Help',

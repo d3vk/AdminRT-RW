@@ -54,6 +54,9 @@ $config = [
         */
     ],
     'params' => $params,
+    'params' => [
+        'icon-framework' => \kartik\icons\Icon::FAS,  // Font Awesome Icon framework
+    ],
 ];
 
 if (YII_ENV_DEV) {
