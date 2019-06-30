@@ -44,7 +44,7 @@ VarDumper::dump($params);
                     ],
                     [
                         'url' => Url::toRoute('/pengguna'),
-                        'label' => 'Lihat Pengguna',
+                        'label' => 'Manage Pengguna',
                         'icon' => 'home'
                     ],
                     [
