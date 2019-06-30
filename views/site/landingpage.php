@@ -49,8 +49,23 @@ VarDumper::dump($params);
                         'icon' => 'user'
                     ],
                     [
+                        'url' => Url::toRoute('/anggota-keluarga'),
+                        'label' => 'Manage Anggota Keluarga',
+                        'icon' => 'file'
+                    ],
+                    [
                         'url' => Url::toRoute('/kartu-keluarga'),
                         'label' => 'Manage Kartu Keluarga',
+                        'icon' => 'file'
+                    ],
+                    [
+                        'url' => Url::toRoute('/data-group'),
+                        'label' => 'Manage Group',
+                        'icon' => 'file'
+                    ],
+                    [
+                        'url' => Url::toRoute('/mutasi'),
+                        'label' => 'Manage Mutasi',
                         'icon' => 'file'
                     ],
                     [
@@ -70,7 +85,7 @@ VarDumper::dump($params);
                 'items' => [
                     [
                         'url' => '#',
-                        'label' => 'Home (' . Yii::$app->user->identity->nama . ')',
+                        'label' => 'Home (' . Yii::$app->user->identity->nik . ')',
                         'icon' => 'home'
                     ],
                     [
