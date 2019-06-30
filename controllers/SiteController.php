@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Pengguna;
+use app\models\KartuKeluarga;
 
 class SiteController extends Controller
 {
@@ -153,5 +154,11 @@ class SiteController extends Controller
     public function actionLandingpage()
     {
         return $this->render('landingpage');
+    }
+    public function getStatusKK()
+    {
+        $data = KartuKeluarga::getStatusKK();
+
+        return $data;
     }
 }

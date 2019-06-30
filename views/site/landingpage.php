@@ -6,22 +6,38 @@ use yii\helpers\Html;
 use yii\helpers\VarDumper;
 use yii\helpers\Url;
 use kartik\sidenav\SideNav;
-
+use app\controllers\SiteController;
 
 $this->title = 'Home Page';
 $this->params['breadcrumbs'][] = $this->title;
 
 $item = Yii::$app->controller->id;
-$params = ucfirst($item);
-VarDumper::dump($params);
+// $params = ucfirst($item);
+// VarDumper::dump($params);
+
+$isAdmin = Yii::$app->user->identity->isAdmin;
+$nik = Yii::$app->user->identity->nik;
 
 ?>
+
 <div class="site-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
+    <?php
+    $status = SiteController::getStatusKK();
+
+    if ($status == 'Proses Mutasi') {
+        echo "<div class='alert alert-danger' role='alert'>
+    Status Kartu Keluarga Anda : <b>" . $status . "</b> 
+    </div>";
+    } else {
+        echo "<div class='alert alert-success' role='alert'>
+    Status Kartu Keluarga Anda : <b>" . $status . "</b> 
+    </div>";
+    }
+
+    ?>
+
 </div>
 
 <hr>
@@ -30,7 +46,7 @@ VarDumper::dump($params);
     <div class="col-sm-3">
         <?php
 
-        $isAdmin = Yii::$app->user->identity->isAdmin;
+
 
         if ($isAdmin) {
             echo SideNav::widget([
@@ -85,8 +101,18 @@ VarDumper::dump($params);
                 'items' => [
                     [
                         'url' => '#',
-                        'label' => 'Home (' . Yii::$app->user->identity->nik . ')',
+                        'label' => 'Home (' . $nik . ')',
                         'icon' => 'home'
+                    ],
+                    [
+                        'url' => '#',
+                        'label' => 'Lihat Tagihan',
+                        'icon' => 'file'
+                    ],
+                    [
+                        'url' => '#',
+                        'label' => 'Request Mutasi',
+                        'icon' => 'file'
                     ],
                     [
                         'label' => 'Help',
@@ -104,6 +130,14 @@ VarDumper::dump($params);
     </div>
 
     <div class="col-sm-9">
-        Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+        <?php
+        if ($isAdmin) {
+            echo "Selamat Datang, Admin!<br>
+            Anda bisa melakukan manajemen terhadap catatan sipil yang ada di RT/RW anda.";
+        } else {
+            echo "Selamat Datang, " . Yii::$app->user->identity->nama . "!<br>";
+            echo "Anda dapat melakukan aksi berdasarkan menu pada sidebar sebelah kiri.";
+        }
+        ?>
     </div>
 </div>

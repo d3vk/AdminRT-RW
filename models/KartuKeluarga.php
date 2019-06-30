@@ -104,4 +104,11 @@ class KartuKeluarga extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Pengguna::className(), ['no_kk' => 'no_kk']);
     }
+
+    public function getStatusKK()
+    {
+        $model = KartuKeluarga::find()->where(['no_kk' => Yii::$app->user->identity->no_kk])->one();
+        return $model->status;
+
+    }
 }
