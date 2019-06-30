@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-use yii\helpers\VarDumper;
+// use yii\helpers\VarDumper;
 use yii\helpers\Url;
 use kartik\sidenav\SideNav;
 use app\controllers\SiteController;

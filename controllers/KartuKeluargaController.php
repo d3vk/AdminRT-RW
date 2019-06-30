@@ -8,6 +8,7 @@ use app\models\KartuKeluargaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * KartuKeluargaController implements the CRUD actions for KartuKeluarga model.
@@ -20,6 +21,18 @@ class KartuKeluargaController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'matchCallback' => function ($rule, $action) {
+                            return Yii::$app->user->identity->isAdmin == 1;
+                        },
+                        'roles' => ['@'],
+                    ]
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -67,7 +80,7 @@ class KartuKeluargaController extends Controller
         $model = new KartuKeluarga();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->no_kk]);
+            return $this->redirect(['view', 'id' => $model->nik]);
         }
 
         return $this->render('create', [
@@ -87,7 +100,7 @@ class KartuKeluargaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->no_kk]);
+            return $this->redirect(['view', 'id' => $model->nik]);
         }
 
         return $this->render('update', [
