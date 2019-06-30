@@ -21,10 +21,20 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'about', 'landingpage'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['about'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['landingpage'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -79,7 +89,7 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('index.php?r=site%2Fuserpage');
+            return $this->redirect('index.php?r=site%2Flandingpage');
         }
 
         $model->password = '';
@@ -140,13 +150,8 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    public function actionUserpage()
+    public function actionLandingpage()
     {
-        return $this->render('userpage');
-    }
-
-    public function actionAdminpage()
-    {
-        return $this->render('adminpage');
+        return $this->render('landingpage');
     }
 }

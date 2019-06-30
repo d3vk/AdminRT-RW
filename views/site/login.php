@@ -41,6 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
 
     <div class="col-lg-offset-1" style="color:#999;">
-        <p>Belum punya akun? <a class="btn btn-default" href="#">Daftar</a></p>
+        <p>Belum punya akun? <a class="btn btn-default" href="index.php?r=site%2Fdaftar">Daftar</a></p>
     </div>
 </div>
