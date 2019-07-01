@@ -24,15 +24,16 @@ $nik = Yii::$app->user->identity->nik;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php
+    $approval = SiteController::getApproval();
     $status = SiteController::getStatusKK();
 
-    if ($status == 'Proses Mutasi') {
-        echo "<div class='alert alert-danger' role='alert'>
+    if ($approval == "Aktif" && $status == 'Aktif') {
+        echo "<div class='alert alert-success' role='alert'>
     Status Kartu Keluarga Anda : <b>" . $status . "</b> 
     </div>";
     } else {
-        echo "<div class='alert alert-success' role='alert'>
-    Status Kartu Keluarga Anda : <b>" . $status . "</b> 
+        echo "<div class='alert alert-danger' role='alert'>
+    Status Kartu Keluarga Anda : <b>Proses Mutasi</b> 
     </div>";
     }
 
@@ -52,6 +53,7 @@ $nik = Yii::$app->user->identity->nik;
             echo SideNav::widget([
                 'type' => SideNav::TYPE_DEFAULT,
                 'heading' => 'Menu',
+
                 'items' => [
                     [
                         'url' => '#',
@@ -97,12 +99,16 @@ $nik = Yii::$app->user->identity->nik;
         } else {
             echo SideNav::widget([
                 'type' => SideNav::TYPE_DEFAULT,
-                'heading' => 'Options',
+                'heading' => 'Menu',
                 'items' => [
                     [
                         'url' => '#',
                         'label' => 'Home (' . $nik . ')',
                         'icon' => 'home'
+                    ], [
+                        'url' => '#',
+                        'label' => 'Lihat Anggota',
+                        'icon' => 'eye-open'
                     ],
                     [
                         'url' => '#',
@@ -110,7 +116,7 @@ $nik = Yii::$app->user->identity->nik;
                         'icon' => 'file'
                     ],
                     [
-                        'url' => '#',
+                        'url' => 'index.php?r=site%2Freq-mutasi',
                         'label' => 'Request Mutasi',
                         'icon' => 'file'
                     ],

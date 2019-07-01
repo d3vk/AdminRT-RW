@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "kartik-v/yii2-widget-datepicker": "dev-master",
         "kartik-v/yii2-widget-sidenav": "@dev",
-        "kartik-v/yii2-icons": "@dev"
+        "kartik-v/yii2-icons": "@dev",
+        "kartik-v/yii2-nav-x": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

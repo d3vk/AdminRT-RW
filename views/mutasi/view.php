@@ -31,7 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'no_kk',
+            'kepala_keluarga',
             'tanggal',
+            'wilayah_lama',
+            'wilayah_baru',
             'group_lama',
             'group_baru',
             'approval',

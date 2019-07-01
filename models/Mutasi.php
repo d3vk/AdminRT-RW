@@ -9,14 +9,16 @@ use Yii;
  *
  * @property int $id
  * @property string $no_kk
+ * @property string $kepala_keluarga
  * @property string $tanggal
+ * @property string $wilayah_lama
+ * @property string $wilayah_baru
  * @property int $group_lama
  * @property int $group_baru
  * @property string $approval
  *
  * @property KartuKeluarga $noKk
- * @property DataGroup $groupBaru
- * @property DataGroup $groupLama
+ * @property StatusKk $approval0
  */
 class Mutasi extends \yii\db\ActiveRecord
 {
@@ -34,14 +36,15 @@ class Mutasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['no_kk', 'tanggal', 'group_lama', 'group_baru', 'approval'], 'required'],
+            [['no_kk', 'kepala_keluarga', 'tanggal', 'wilayah_lama', 'wilayah_baru', 'group_lama', 'group_baru', 'approval'], 'required'],
             [['tanggal'], 'safe'],
             [['group_lama', 'group_baru'], 'integer'],
             [['no_kk'], 'string', 'max' => 16],
-            [['approval'], 'string', 'max' => 255],
+            [['kepala_keluarga'], 'string', 'max' => 255],
+            [['wilayah_lama', 'wilayah_baru'], 'string', 'max' => 7],
+            [['approval'], 'string', 'max' => 15],
             [['no_kk'], 'exist', 'skipOnError' => true, 'targetClass' => KartuKeluarga::className(), 'targetAttribute' => ['no_kk' => 'no_kk']],
-            [['group_baru'], 'exist', 'skipOnError' => true, 'targetClass' => DataGroup::className(), 'targetAttribute' => ['group_baru' => 'id']],
-            [['group_lama'], 'exist', 'skipOnError' => true, 'targetClass' => DataGroup::className(), 'targetAttribute' => ['group_lama' => 'id']],
+            [['approval'], 'exist', 'skipOnError' => true, 'targetClass' => StatusKk::className(), 'targetAttribute' => ['approval' => 'keterangan']],
         ];
     }
 
@@ -53,7 +56,10 @@ class Mutasi extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'no_kk' => 'No Kk',
+            'kepala_keluarga' => 'Kepala Keluarga',
             'tanggal' => 'Tanggal',
+            'wilayah_lama' => 'Wilayah Lama',
+            'wilayah_baru' => 'Wilayah Baru',
             'group_lama' => 'Group Lama',
             'group_baru' => 'Group Baru',
             'approval' => 'Approval',
@@ -71,16 +77,22 @@ class Mutasi extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getGroupBaru()
+    public function getApproval0()
     {
-        return $this->hasOne(DataGroup::className(), ['id' => 'group_baru']);
+        return $this->hasOne(StatusKk::className(), ['keterangan' => 'approval']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getGroupLama()
+    public function getStatus()
     {
-        return $this->hasOne(DataGroup::className(), ['id' => 'group_lama']);
+        $model = Mutasi::find()->where(['no_kk' => Yii::$app->user->identity->no_kk])->one();
+        // var_dump($model);
+
+        if (!$model) {
+            return "Aktif";
+        }
+        else {
+            return $model->approval;
+        }
+        
     }
 }

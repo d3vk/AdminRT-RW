@@ -10,6 +10,9 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+use kartik\icons\Icon;
+Icon::map($this, Icon::FAS);  
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

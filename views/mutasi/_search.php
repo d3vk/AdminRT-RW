@@ -19,11 +19,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'no_kk') ?>
 
+    <?= $form->field($model, 'kepala_keluarga') ?>
+
     <?= $form->field($model, 'tanggal') ?>
 
-    <?= $form->field($model, 'group_lama') ?>
+    <?= $form->field($model, 'wilayah_lama') ?>
 
-    <?= $form->field($model, 'group_baru') ?>
+    <?php // echo $form->field($model, 'wilayah_baru') ?>
+
+    <?php // echo $form->field($model, 'group_lama') ?>
+
+    <?php // echo $form->field($model, 'group_baru') ?>
 
     <?php // echo $form->field($model, 'approval') ?>
 

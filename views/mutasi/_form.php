@@ -14,7 +14,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'no_kk')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'kepala_keluarga')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'tanggal')->textInput() ?>
+
+    <?= $form->field($model, 'wilayah_lama')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'wilayah_baru')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'group_lama')->textInput() ?>
 

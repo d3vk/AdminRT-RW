@@ -2,9 +2,16 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'AdministrasiRT-RW';
 ?>
-<div class="site-index">
+
+<style>
+    body {
+        background-image: url("/borobudur.jpg");
+    }
+</style>
+
+<div class="site-index" style="background-image: url('/borobudur.jpg');">
 
     <div class="jumbotron">
         <h1>Selamat Datang!</h1>

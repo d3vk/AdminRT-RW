@@ -28,9 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'no_kk',
+            'kepala_keluarga',
             'tanggal',
-            'group_lama',
-            'group_baru',
+            'wilayah_lama',
+            //'wilayah_baru',
+            //'group_lama',
+            //'group_baru',
             //'approval',
 
             ['class' => 'yii\grid\ActionColumn'],

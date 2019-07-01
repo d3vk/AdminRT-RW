@@ -80,7 +80,7 @@ class DataGroupController extends Controller
         $model = new DataGroup();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nik]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -100,7 +100,7 @@ class DataGroupController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nik]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [

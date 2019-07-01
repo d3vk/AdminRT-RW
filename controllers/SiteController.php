@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Pengguna;
 use app\models\KartuKeluarga;
+use app\models\Mutasi;
 
 class SiteController extends Controller
 {
@@ -151,14 +152,35 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
     public function actionLandingpage()
     {
         return $this->render('landingpage');
     }
+
+    public function actionReqMutasi()
+    {
+        $model = new Mutasi();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('index.php?r=site%2Flogin');
+        }
+
+        return $this->render('reqmutasi', [
+            'model' => $model,
+        ]);
+    }
+
     public function getStatusKK()
     {
         $data = KartuKeluarga::getStatusKK();
 
+        return $data;
+    }
+
+    public function getApproval()
+    {
+        $data = Mutasi::getStatus();
         return $data;
     }
 }

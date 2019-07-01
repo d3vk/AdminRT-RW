@@ -80,7 +80,7 @@ class KartuKeluargaController extends Controller
         $model = new KartuKeluarga();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nik]);
+            return $this->redirect(['view', 'id' => $model->no_kk]);
         }
 
         return $this->render('create', [
@@ -100,7 +100,7 @@ class KartuKeluargaController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nik]);
+            return $this->redirect(['view', 'id' => $model->no_kk]);
         }
 
         return $this->render('update', [
