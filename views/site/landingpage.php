@@ -106,7 +106,7 @@ $nik = Yii::$app->user->identity->nik;
                         'label' => 'Home (' . $nik . ')',
                         'icon' => 'home'
                     ], [
-                        'url' => '#',
+                        'url' => 'index.php?r=site%2Fview-member',
                         'label' => 'Lihat Anggota',
                         'icon' => 'eye-open'
                     ],

@@ -12,6 +12,7 @@ use app\models\ContactForm;
 use app\models\Pengguna;
 use app\models\KartuKeluarga;
 use app\models\Mutasi;
+use app\models\AnggotaKeluargaSearch;
 
 class SiteController extends Controller
 {
@@ -182,5 +183,16 @@ class SiteController extends Controller
     {
         $data = Mutasi::getStatus();
         return $data;
+    }
+
+    public function actionViewMember()
+    {
+        $searchModel = new AnggotaKeluargaSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('view-member', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 }
