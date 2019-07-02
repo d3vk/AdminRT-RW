@@ -111,7 +111,7 @@ $nik = Yii::$app->user->identity->nik;
                         'icon' => 'eye-open'
                     ],
                     [
-                        'url' => '#',
+                        'url' => 'index.php?r=site%2Fview-tax',
                         'label' => 'Lihat Tagihan',
                         'icon' => 'file'
                     ],

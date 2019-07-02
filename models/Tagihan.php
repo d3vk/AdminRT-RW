@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "tagihan".
@@ -73,5 +75,19 @@ class Tagihan extends \yii\db\ActiveRecord
         }
 
         return array_sum($data);
+    }
+
+    public function getStat()
+    {
+        $model = Tagihan::find()->where(['id_group' => Yii::$app->user->identity->id_group])->all();
+        $model1 = ArrayHelper::getValue($model, '0.status');
+        $model2 = ArrayHelper::getValue($model, '1.status');
+        // var_dump($model1);
+        // var_dump($model2);
+        $out['kebersihan'] = $model1;
+        $out['keamanan'] = $model2;
+
+        return $out;
+        // var_dump($model);
     }
 }

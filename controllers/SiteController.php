@@ -12,6 +12,7 @@ use app\models\ContactForm;
 use app\models\Pengguna;
 use app\models\KartuKeluarga;
 use app\models\Mutasi;
+use app\models\Tagihan;
 use app\models\AnggotaKeluargaSearch;
 use app\models\TagihanSearch;
 
@@ -25,7 +26,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'about', 'landingpage', 'req-mutasi'],
+                'only' => ['logout', 'about', 'landingpage', 'req-mutasi', 'view-member', 'view-tax'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -39,6 +40,21 @@ class SiteController extends Controller
                     ],
                     [
                         'actions' => ['landingpage'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ], 
+                    [
+                        'actions' => ['req-mutasi'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ], 
+                    [
+                        'actions' => ['view-member'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['view-tax'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -154,7 +170,7 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    
+
     public function actionLandingpage()
     {
         return $this->render('landingpage');
@@ -200,11 +216,17 @@ class SiteController extends Controller
     public function actionViewTax()
     {
         $searchModel = new TagihanSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, true);
 
         return $this->render('view-tax', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function getStatusBayar()
+    {
+        $status = Tagihan::getStat();
+        return $status;
     }
 }
