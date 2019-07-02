@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\AnggotaKeluargaSearch */
+/* @var $searchModel app\models\TagihanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Anggota Keluargas';
+$this->title = 'Tagihans';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="anggota-keluarga-index">
+<div class="tagihan-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Anggota Keluarga', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Tagihan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,19 +26,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'nik',
+            'id',
+            'id_group',
             'no_kk',
-            'nama_anggota',
-            'status_hubungan',
-            'status_perkawinan',
-            'tempat_lahir',
-            'tanggal_lahir',
-            'jenis_kelamin',
-            'gol_darah',
-            'agama',
-            'pendidikan',
-            'pekerjaan',
-            'nama_ibu',
+            'deskripsi',
+            'tagihan',
+            //'status',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

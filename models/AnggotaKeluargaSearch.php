@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\AnggotaKeluarga;
@@ -37,9 +38,13 @@ class AnggotaKeluargaSearch extends AnggotaKeluarga
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $self = false)
     {
         $query = AnggotaKeluarga::find();
+
+        if ($self) {
+            $query->where(['no_kk' => Yii::$app->user->identity->no_kk]);
+        }
 
         // add conditions that should always apply here
 

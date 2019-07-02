@@ -23,27 +23,27 @@ $this->title = 'AdministrasiRT-RW';
 
     <div class="body-content">
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-4">
                 <h2>Buat KK Baru</h2>
 
                 <p style="text-align:justify;">Anda dapat membuat Kartu Keluarga baru melalui portal ini dengan cara menghubungi admin secara langsung.</p>
 
                 <p><a class="btn btn-default" href="#">Buat KK &raquo;</a></p>
-            </div>
+            </div> -->
 
-            <div class="col-lg-4">
-                <h2>Tagihan</h2>
+            <div class="col-lg-6">
+                <h2>Cek Tagihan</h2>
 
-                <p style="text-align:justify;">Anda sebagai pengguna dapat melihat dan melakukan pengecekan tagihan anda sebagai warga dalam satu RT di sebuah kelurahan.</p>
+                <p style="text-align:justify;">Cek Tagihan secara berkala melalui sistem AdministrasiRT-RW se-Semarang.</p>
 
                 <p><a class=" btn btn-default" href="#">Cek Tagihan &raquo;</a></p>
             </div>
 
-            <div class="col-lg-4">
-                <h2>Mutasi KK</h2>
+            <div class="col-lg-6">
+                <h2>Ajukan Mutasi</h2>
 
-                <p style="text-align:justify;">Sleain itu anda juga dapat melakukan permintaan mutasi Kartu Keluarga sesuai dengan kebutuhan anda.</p>
+                <p style="text-align:justify;">Mutasi Kartu Keluarga semakin mudah tanpa proses berkepanjangan. Tinggal ajukan saja, tunggu sampai proses selesai.</p>
 
                 <p><a class="btn btn-default" href="#">Request Mutasi &raquo;</a></p>
             </div>

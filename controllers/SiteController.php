@@ -13,6 +13,7 @@ use app\models\Pengguna;
 use app\models\KartuKeluarga;
 use app\models\Mutasi;
 use app\models\AnggotaKeluargaSearch;
+use app\models\TagihanSearch;
 
 class SiteController extends Controller
 {
@@ -24,7 +25,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'about', 'landingpage'],
+                'only' => ['logout', 'about', 'landingpage', 'req-mutasi'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -188,9 +189,20 @@ class SiteController extends Controller
     public function actionViewMember()
     {
         $searchModel = new AnggotaKeluargaSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, true);
 
         return $this->render('view-member', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewTax()
+    {
+        $searchModel = new TagihanSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('view-tax', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
