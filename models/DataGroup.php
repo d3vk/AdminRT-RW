@@ -55,12 +55,12 @@ class DataGroup extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_wilayah' => 'Id Wilayah',
-            'no_kk' => 'No Kk',
+            'id_wilayah' => 'ID Wilayah',
+            'no_kk' => 'Nomor KK',
             'kepala_keluarga' => 'Kepala Keluarga',
             'nama_group' => 'Nama Group',
-            'rt' => 'Rt',
-            'rw' => 'Rw',
+            'rt' => 'RT',
+            'rw' => 'RW',
         ];
     }
 

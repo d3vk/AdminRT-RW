@@ -8,7 +8,7 @@ use app\models\Wilayah;
 /* @var $model app\models\Mutasi */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = 'Request Mutasi';
+$this->title = 'Ajukan Mutasi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mutasi-create">
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'approval')->label(false)->hiddenInput(['value' => 'Proses Mutasi']); ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Ajukan', ['class' => 'btn btn-success']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

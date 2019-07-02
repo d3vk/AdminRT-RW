@@ -55,7 +55,7 @@ class Mutasi extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'no_kk' => 'No Kk',
+            'no_kk' => 'Nomor KK',
             'kepala_keluarga' => 'Kepala Keluarga',
             'tanggal' => 'Tanggal',
             'wilayah_lama' => 'Wilayah Lama',

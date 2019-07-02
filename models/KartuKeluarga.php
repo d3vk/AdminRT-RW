@@ -50,7 +50,7 @@ class KartuKeluarga extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'no_kk' => 'No Kk',
+            'no_kk' => 'Nomor KK',
             'kepala_keluarga' => 'Kepala Keluarga',
             'alamat' => 'Alamat',
             'status' => 'Status',

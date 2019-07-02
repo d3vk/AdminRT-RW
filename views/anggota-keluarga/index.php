@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AnggotaKeluargaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Anggota Keluargas';
+$this->title = 'Buat Anggota Keluarga';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="anggota-keluarga-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Anggota Keluarga', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Buat Anggota Keluarga', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,16 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'nik',
             'no_kk',
             'nama_anggota',
-            'status_hubungan',
-            'status_perkawinan',
+            // 'status_hubungan',
+            // 'status_perkawinan',
             'tempat_lahir',
             'tanggal_lahir',
             'jenis_kelamin',
             'gol_darah',
             'agama',
-            'pendidikan',
-            'pekerjaan',
-            'nama_ibu',
+            // 'pendidikan',
+            // 'pekerjaan',
+            // 'nama_ibu',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

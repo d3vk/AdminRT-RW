@@ -32,22 +32,26 @@ $this->title = 'AdministrasiRT-RW';
                 <p><a class="btn btn-default" href="#">Buat KK &raquo;</a></p>
             </div> -->
 
-            <div class="col-lg-6">
-                <h2>Cek Tagihan</h2>
+        <div class="col-lg-6">
+            <h2>Cek Tagihan</h2>
 
-                <p style="text-align:justify;">Cek Tagihan secara berkala melalui sistem AdministrasiRT-RW se-Semarang.</p>
+            <p style="text-align:justify;">
+                Sekarang kamu bisa mengecek tagihan bulanan kamu melalui website AdminRT-RW. Kamu tinggal melakukan login dan pilih menu "Cek Tagihan", lalu AdminRT-RW akan menampilkan jumlah tagihan kamu. Setelah selesai melakukan pengecekan, kamu bisa langsung bayar tagihan bulanan kamu melalui Bendahara RT.
+            </p>
 
-                <p><a class=" btn btn-default" href="#">Cek Tagihan &raquo;</a></p>
-            </div>
-
-            <div class="col-lg-6">
-                <h2>Ajukan Mutasi</h2>
-
-                <p style="text-align:justify;">Mutasi Kartu Keluarga semakin mudah tanpa proses berkepanjangan. Tinggal ajukan saja, tunggu sampai proses selesai.</p>
-
-                <p><a class="btn btn-default" href="#">Request Mutasi &raquo;</a></p>
-            </div>
+            <p><a class=" btn btn-default" href="index.php?r=site%2Fview-tax">Cek Tagihan &raquo;</a></p>
         </div>
 
+        <div class="col-lg-6">
+            <h2>Ajukan Mutasi</h2>
+
+            <p style="text-align:justify;">
+                Mutasi Kartu Keluarga semakin mudah tanpa proses berkepanjangan. Tinggal ajukan saja melalui AdminRT-RW dan akan langsung dilaporkan ke disdukcapil setempat. Anda tidak perlu membawa apapun, cukup klik-klik, selesai. Tunggu update dari disdukcapil.
+            </p>
+
+            <p><a class="btn btn-default" href="index.php?r=site%2Freq-mutasi">Request Mutasi &raquo;</a></p>
+        </div>
     </div>
+
+</div>
 </div>

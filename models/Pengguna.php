@@ -49,12 +49,12 @@ class Pengguna extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nik' => 'Nik',
-            'no_kk' => 'No Kk',
-            'nama' => 'Nama',
+            'nik' => 'NIK',
+            'no_kk' => 'Nomor KK',
+            'nama' => 'Nama Lengkap',
             'password' => 'Password',
-            'id_group' => 'Id Group',
-            'isAdmin' => 'Is Admin',
+            'id_group' => 'ID Group',
+            'isAdmin' => 'isAdmin',
         ];
     }
 

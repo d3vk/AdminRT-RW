@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\AnggotaKeluarga */
 
-$this->title = 'Create Anggota Keluarga';
+$this->title = 'Buat Anggota Keluarga';
 $this->params['breadcrumbs'][] = ['label' => 'Anggota Keluargas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

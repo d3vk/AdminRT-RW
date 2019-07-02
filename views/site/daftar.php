@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'id_group')->dropDownList(DataGroup::getListGroupID(), ["prompt" => "Pilih group"]) ?>
 
-        <?= $form->field($model, 'isAdmin')->textInput() ?>
+        <?= $form->field($model, 'isAdmin')->label(false)->hiddenInput(['value' => '0']); ?>
 
         <div class="form-group">
             <?= Html::submitButton('Daftar', ['class' => 'btn btn-success']) ?>

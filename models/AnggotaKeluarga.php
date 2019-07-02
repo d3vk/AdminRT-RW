@@ -73,15 +73,15 @@ class AnggotaKeluarga extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nik' => 'Nik',
-            'no_kk' => 'No Kk',
+            'nik' => 'NIK',
+            'no_kk' => 'Nomor KK',
             'nama_anggota' => 'Nama Anggota',
             'status_hubungan' => 'Status Hubungan',
             'status_perkawinan' => 'Status Perkawinan',
             'tempat_lahir' => 'Tempat Lahir',
             'tanggal_lahir' => 'Tanggal Lahir',
             'jenis_kelamin' => 'Jenis Kelamin',
-            'gol_darah' => 'Gol Darah',
+            'gol_darah' => 'Golongan Darah',
             'agama' => 'Agama',
             'pendidikan' => 'Pendidikan',
             'pekerjaan' => 'Pekerjaan',

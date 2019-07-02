@@ -31,25 +31,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
-            'id_group',
-            'no_kk',
+            // 'id_group',
+            // 'no_kk',
             'deskripsi',
             'tagihan',
             //'status',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
     <?php
     $sum = Tagihan::getSum();
-    echo "<div class='alert alert-light' role='alert'>
-    Jumlah Tagihan Anda <b>Rp" . $sum . "</b></div>";
+    if ($tagihan1 == "Terbayar" && $tagihan2 == "Terbayar") {
+        echo "<div class='alert alert-light' role='alert'>
+    <h3>Jumlah Tagihan Anda <b>Rp0</b></h3></div>";
+    } else {
+        echo "<div class='alert alert-light' role='alert'>
+    <h3>Jumlah Tagihan Anda <b>Rp" . $sum . "</b></h3></div>";
+    }
     ?>
 
 

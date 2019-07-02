@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\DataGroup */
 
-$this->title = 'Create Data Group';
+$this->title = 'Buat Data Group';
 $this->params['breadcrumbs'][] = ['label' => 'Data Groups', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

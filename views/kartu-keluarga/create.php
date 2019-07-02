@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\KartuKeluarga */
 
-$this->title = 'Create Kartu Keluarga';
+$this->title = 'Buat Kartu Keluarga';
 $this->params['breadcrumbs'][] = ['label' => 'Kartu Keluargas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

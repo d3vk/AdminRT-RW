@@ -26,7 +26,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'about', 'landingpage', 'req-mutasi', 'view-member', 'view-tax'],
+                'only' => ['logout', 'about', 'userpage', 'req-mutasi', 'view-member', 'view-tax'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -39,7 +39,7 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['landingpage'],
+                        'actions' => ['userpage'],
                         'allow' => true,
                         'roles' => ['@'],
                     ], 
@@ -109,7 +109,7 @@ class SiteController extends Controller
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('index.php?r=site%2Flandingpage');
+            return $this->redirect('index.php?r=site%2Fuserpage');
         }
 
         $model->password = '';
@@ -171,9 +171,9 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionLandingpage()
+    public function actionUserpage()
     {
-        return $this->render('landingpage');
+        return $this->render('userpage');
     }
 
     public function actionReqMutasi()

@@ -50,10 +50,10 @@ class Tagihan extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_group' => 'Id Group',
-            'no_kk' => 'No Kk',
+            'id_group' => 'ID Group',
+            'no_kk' => 'Nomor KK',
             'deskripsi' => 'Deskripsi',
-            'tagihan' => 'Tagihan',
+            'tagihan' => 'Tagihan (Rp)',
             'status' => 'Status',
         ];
     }

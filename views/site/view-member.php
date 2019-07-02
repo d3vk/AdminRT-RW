@@ -20,27 +20,54 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'nik',
             'no_kk',
             'nama_anggota',
-            'status_hubungan',
-            'status_perkawinan',
-            //'tempat_lahir',
-            //'tanggal_lahir',
-            //'jenis_kelamin',
-            //'gol_darah',
-            //'agama',
-            //'pendidikan',
-            //'pekerjaan',
-            //'nama_ibu',
+            'nik',
+            'jenis_kelamin',
+            'tempat_lahir',
+            'tanggal_lahir',
+            'agama',
+            'pendidikan',
+            'pekerjaan',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            // 'status_hubungan',
+            // 'status_perkawinan',
+            // 'gol_darah',
+            // 'nama_ibu',
+
+            // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
+    <br>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        // 'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            // 'no_kk',
+            // 'nama_anggota',
+            // 'nik',
+            // 'jenis_kelamin',
+            // 'tempat_lahir',
+            // 'tanggal_lahir',
+            // 'agama',
+            // 'pendidikan',
+            // 'pekerjaan',
+
+            'status_hubungan',
+            'status_perkawinan',
+            'gol_darah',
+            'nama_ibu',
+
+            // ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 
 </div>
