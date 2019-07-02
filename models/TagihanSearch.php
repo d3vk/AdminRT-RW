@@ -43,7 +43,7 @@ class TagihanSearch extends Tagihan
         $query = Tagihan::find();
 
         if ($self) {
-            $query->where(['no_kk' => Yii::$app->user->identity->no_kk]);
+            $query->where(['id_group' => Yii::$app->user->identity->id_group]);
         }
 
         // add conditions that should always apply here

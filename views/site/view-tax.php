@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Tagihan;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TagihanSearch */
@@ -13,9 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tagihan-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); 
-    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -33,6 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+    <?php
+    $sum = Tagihan::getSum();
+    echo "<div class='alert alert-light' role='alert'>
+    Jumlah Tagihan Anda <b>Rp" . $sum ."</b></div>"
+
+    
+    ?>
 
 
 </div>

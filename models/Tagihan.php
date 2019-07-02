@@ -63,4 +63,15 @@ class Tagihan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(DataGroup::className(), ['id' => 'id_group']);
     }
+
+    public function getSum()
+    {
+        $model = Tagihan::find()->all();
+
+        foreach ($model as $values) {
+            $data[$values->tagihan] = $values->tagihan;
+        }
+
+        return array_sum($data);
+    }
 }
