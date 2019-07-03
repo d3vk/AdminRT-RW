@@ -18,7 +18,7 @@ class MutasiSearch extends Mutasi
     {
         return [
             [['id', 'group_lama', 'group_baru'], 'integer'],
-            [['no_kk', 'kepala_keluarga', 'tanggal', 'wilayah_lama', 'wilayah_baru', 'approval'], 'safe'],
+            [['nik', 'tanggal', 'wilayah_lama', 'wilayah_baru', 'approval'], 'safe'],
         ];
     }
 
@@ -64,8 +64,7 @@ class MutasiSearch extends Mutasi
             'group_baru' => $this->group_baru,
         ]);
 
-        $query->andFilterWhere(['like', 'no_kk', $this->no_kk])
-            ->andFilterWhere(['like', 'kepala_keluarga', $this->kepala_keluarga])
+        $query->andFilterWhere(['like', 'nik', $this->nik])
             ->andFilterWhere(['like', 'wilayah_lama', $this->wilayah_lama])
             ->andFilterWhere(['like', 'wilayah_baru', $this->wilayah_baru])
             ->andFilterWhere(['like', 'approval', $this->approval]);

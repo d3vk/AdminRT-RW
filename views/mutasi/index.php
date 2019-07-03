@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\MutasiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Mutasi';
+$this->title = 'Mutasis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mutasi-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Buat Mutasi', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Mutasi', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -27,11 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'no_kk',
-            'kepala_keluarga',
+            'nik',
             'tanggal',
             'wilayah_lama',
-            //'wilayah_baru',
+            'wilayah_baru',
             //'group_lama',
             //'group_baru',
             //'approval',

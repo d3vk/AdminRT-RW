@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jun 2019 pada 06.48
+-- Waktu pembuatan: 03 Jul 2019 pada 13.18
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.10
 
@@ -61,7 +61,7 @@ CREATE TABLE `anggota_keluarga` (
   `jenis_kelamin` varchar(15) NOT NULL,
   `gol_darah` varchar(2) NOT NULL,
   `agama` varchar(15) NOT NULL,
-  `pendidikan` varchar(30) NOT NULL,
+  `pendidikan` varchar(70) NOT NULL,
   `pekerjaan` varchar(30) NOT NULL,
   `nama_ibu` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -71,8 +71,13 @@ CREATE TABLE `anggota_keluarga` (
 --
 
 INSERT INTO `anggota_keluarga` (`nik`, `no_kk`, `nama_anggota`, `status_hubungan`, `status_perkawinan`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `gol_darah`, `agama`, `pendidikan`, `pekerjaan`, `nama_ibu`) VALUES
-('1234567890987651', '1234567890987654', 'Abcdef Ghijkl', 'Kepala Keluarga', 'Kawin', 'SEMARANG', '1989-06-13', 'Laki-laki', 'A', 'Islam', 'Diploma IV / Strata I', 'Pegawai Negeri Sipil', 'Zabcde Fghij'),
-('1234567890987652', '1234567890987654', 'Mnopq Rstuv', 'Istri', 'Kawin', 'SALATIGA', '1992-06-23', 'Perempuan', 'AB', 'Islam', 'Diploma IV / Strata I', 'Guru', 'Xyzab Cdefg');
+('1234567890987651', '1234567890987654', 'Slamet', 'Kepala Keluarga', 'Kawin', 'SEMARANG', '1989-06-13', 'Laki-laki', 'A', 'Islam', 'Diploma IV / Strata I', 'Pegawai Negeri Sipil', 'Dwi'),
+('1234567890987652', '1234567890987654', 'Lestari', 'Istri', 'Kawin', 'SALATIGA', '1992-06-23', 'Perempuan', 'AB', 'Islam', 'Diploma IV / Strata I', 'Guru', 'Sriningsih'),
+('1234567890987653', '1234567890987659', 'Elisha Harianja', 'Anak', 'Belum Kawin', 'SEMARANG', '2017-02-01', 'Perempuan', 'A', 'Islam', 'Tidak / Belum Sekolah', 'Belum / Tidak Bekerja', 'Lestari'),
+('1234567890987655', '1234567890987654', 'Nathan Panjaitan', 'Anak', 'Belum Kawin', 'SEMARANG', '2017-02-01', 'Laki-laki', 'B', 'Islam', 'Tidak / Belum Sekolah', 'Belum / Tidak Bekerja', 'Lestari'),
+('1234567890987656', '1234567890987654', 'Hadi Indra Pranoto', 'Anak', 'Belum Kawin', 'SEMARANG', '2019-02-01', 'Laki-laki', 'A', 'Islam', 'Tidak / Belum Sekolah', 'Belum / Tidak Bekerja', 'Lestari'),
+('1234567890987657', '1234567890987659', 'Benny Wahyu Sumadi', 'Kepala Keluarga', 'Kawin', 'SALATIGA', '1972-03-08', 'Laki-laki', 'O', 'Kristen', 'Strata II', 'Guru', 'Susanti'),
+('1234567890987658', '1234567890987659', 'Wangi Yanti Wibowo', 'Istri', 'Kawin', 'SEMARANG', '1974-06-11', 'Perempuan', 'O', 'Kristen', 'Akademi / Diploma III / Sarjana Muda', 'Pegawai Negeri Sipil', 'Yulia');
 
 -- --------------------------------------------------------
 
@@ -95,7 +100,9 @@ CREATE TABLE `data_group` (
 --
 
 INSERT INTO `data_group` (`id`, `id_wilayah`, `no_kk`, `kepala_keluarga`, `nama_group`, `rt`, `rw`) VALUES
-(1, '50137', '1234567890987654', 'Abcdef Ghijkl', 'Keluarga Abcdef Ghijkl', 1, 1);
+(1, '50137', '1234567890987654', 'Slamet', 'Keluarga Slamet', 1, 1),
+(2, '50188', '1234567890987659', 'Benny Wahyu Sumadi', 'Keluarga Benny Wahyu Sumadi', 1, 1),
+(3, '50111', '0000000000000000', '0', '0', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -157,7 +164,9 @@ CREATE TABLE `kartu_keluarga` (
 --
 
 INSERT INTO `kartu_keluarga` (`no_kk`, `kepala_keluarga`, `alamat`, `status`) VALUES
-('1234567890987654', 'Abcdef Ghijkl', '50137', 'Aktif');
+('0000000000000000', '0', '50111', 'Proses Mutasi'),
+('1234567890987654', 'Slamet', '50137', 'Aktif'),
+('1234567890987659', 'Benny Wahyu Sumadi', '50125', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -167,12 +176,21 @@ INSERT INTO `kartu_keluarga` (`no_kk`, `kepala_keluarga`, `alamat`, `status`) VA
 
 CREATE TABLE `mutasi` (
   `id` int(11) NOT NULL,
-  `no_kk` varchar(16) NOT NULL,
+  `nik` varchar(16) NOT NULL,
   `tanggal` date NOT NULL,
+  `wilayah_lama` varchar(7) NOT NULL,
+  `wilayah_baru` varchar(7) NOT NULL,
   `group_lama` int(11) NOT NULL,
   `group_baru` int(11) NOT NULL,
-  `approval` varchar(255) NOT NULL
+  `approval` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `mutasi`
+--
+
+INSERT INTO `mutasi` (`id`, `nik`, `tanggal`, `wilayah_lama`, `wilayah_baru`, `group_lama`, `group_baru`, `approval`) VALUES
+(2, '1234567890987653', '2019-07-03', '50137', '50125', 1, 2, 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -265,9 +283,13 @@ CREATE TABLE `pengguna` (
 --
 
 INSERT INTO `pengguna` (`nik`, `no_kk`, `nama`, `password`, `id_group`, `isAdmin`) VALUES
-('1234567890987651', '1234567890987654', 'Abcdef Ghijkl', '$2y$13$Mv4KegwxCN0NS6ZWiBA4xusCe5GdQXFX12wYlyTRBgVBbw1q62VsC', 1, 1),
-('1234567890987652', '1234567890987654', 'Mnopq Rstuv', '$2y$13$qP10nsDnfGOpJE.VnrAuluKEhoXHwDZ4wq10qwvCuQ35sFImNTSpS', 1, 0),
-('1234567890987653', '1234567890987654', 'Bcdef Ghijkl', '$2y$13$1JKxam0zT/Yy9EKgHYuEge7.WDjvwudLxFtupI2xkVWORDweH7zFq', 1, 0);
+('1234567890987651', '1234567890987654', 'Slamet', '$2y$13$vGzHQ/9WK22NRU6YOHnJKOnYqw9pQRVql8AwRoO3F/o7oWaZZH4Ma', 1, 1),
+('1234567890987652', '1234567890987654', 'Lestari', '$2y$13$qP10nsDnfGOpJE.VnrAuluKEhoXHwDZ4wq10qwvCuQ35sFImNTSpS', 1, 0),
+('1234567890987653', '1234567890987654', 'Elisha Harianja', '$2y$13$1JKxam0zT/Yy9EKgHYuEge7.WDjvwudLxFtupI2xkVWORDweH7zFq', 1, 0),
+('1234567890987655', '1234567890987654', 'Nathan Panjaitan', '$2y$13$0cr3G60vcFnkoVOB324pB./AYFkmhCqNVprWxtZuT6.bM7koaD1Xe', 1, 0),
+('1234567890987656', '1234567890987654', 'Hadi Indra Pranoto', '$2y$13$II0p3gf/QKWFIBMKdlVXf.MieG3dx0jElPOTW1QTii4gvilpRbrgG', 1, 0),
+('1234567890987657', '1234567890987659', 'Benny Wahyu Sumadi', '$2y$13$5iKcYyMPJCMtazVPwZu6n.GvdMl9JSgxYG9pKwNFcE3TPQBmX3Xsa', 2, 0),
+('1234567890987658', '1234567890987659', 'Wangi Yanti Wibowo', '$2y$13$92zHZ1676Ry8GVKSwk3Rj.vtN7B8FQNqZw1aXR0f5ZE.gVOk8F5tC', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -336,6 +358,32 @@ INSERT INTO `status_perkawinan` (`id`, `status`) VALUES
 (3, 'Cerai Hidup'),
 (4, 'Cerai Mati'),
 (2, 'Kawin');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tagihan`
+--
+
+CREATE TABLE `tagihan` (
+  `id` int(11) NOT NULL,
+  `id_group` int(11) NOT NULL,
+  `no_kk` varchar(16) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `tagihan` int(9) NOT NULL,
+  `status` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tagihan`
+--
+
+INSERT INTO `tagihan` (`id`, `id_group`, `no_kk`, `deskripsi`, `tagihan`, `status`) VALUES
+(3, 1, '1234567890987654', 'Tenaga Kebersihan', 80000, 'Terbayar'),
+(4, 1, '1234567890987654', 'Tenaga Keamanan', 120000, 'Terbayar'),
+(5, 2, '1234567890987659', 'Tenaga Kebersihan', 80000, 'Belum Bayar'),
+(6, 2, '1234567890987659', 'Tenaga Keamanan', 120000, 'Belum Bayar'),
+(8, 1, '1234567890987654', 'Tenaga Keamanan', 120000, 'Belum Bayar');
 
 -- --------------------------------------------------------
 
@@ -853,9 +901,8 @@ ALTER TABLE `kartu_keluarga`
 --
 ALTER TABLE `mutasi`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `no_kk` (`no_kk`),
-  ADD KEY `group_baru` (`group_baru`),
-  ADD KEY `group_lama` (`group_lama`);
+  ADD KEY `approval` (`approval`),
+  ADD KEY `nik` (`nik`);
 
 --
 -- Indeks untuk tabel `pekerjaan`
@@ -901,6 +948,13 @@ ALTER TABLE `status_perkawinan`
   ADD KEY `status` (`status`);
 
 --
+-- Indeks untuk tabel `tagihan`
+--
+ALTER TABLE `tagihan`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_group` (`id_group`);
+
+--
 -- Indeks untuk tabel `wilayah`
 --
 ALTER TABLE `wilayah`
@@ -915,13 +969,19 @@ ALTER TABLE `wilayah`
 -- AUTO_INCREMENT untuk tabel `data_group`
 --
 ALTER TABLE `data_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `mutasi`
 --
 ALTER TABLE `mutasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `tagihan`
+--
+ALTER TABLE `tagihan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -958,9 +1018,8 @@ ALTER TABLE `kartu_keluarga`
 -- Ketidakleluasaan untuk tabel `mutasi`
 --
 ALTER TABLE `mutasi`
-  ADD CONSTRAINT `mutasi_ibfk_1` FOREIGN KEY (`no_kk`) REFERENCES `kartu_keluarga` (`no_kk`),
-  ADD CONSTRAINT `mutasi_ibfk_2` FOREIGN KEY (`group_baru`) REFERENCES `data_group` (`id`),
-  ADD CONSTRAINT `mutasi_ibfk_3` FOREIGN KEY (`group_lama`) REFERENCES `data_group` (`id`);
+  ADD CONSTRAINT `mutasi_ibfk_2` FOREIGN KEY (`approval`) REFERENCES `status_kk` (`keterangan`),
+  ADD CONSTRAINT `mutasi_ibfk_3` FOREIGN KEY (`nik`) REFERENCES `pengguna` (`nik`);
 
 --
 -- Ketidakleluasaan untuk tabel `pengguna`
@@ -968,6 +1027,12 @@ ALTER TABLE `mutasi`
 ALTER TABLE `pengguna`
   ADD CONSTRAINT `pengguna_ibfk_1` FOREIGN KEY (`no_kk`) REFERENCES `kartu_keluarga` (`no_kk`),
   ADD CONSTRAINT `pengguna_ibfk_2` FOREIGN KEY (`id_group`) REFERENCES `data_group` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `tagihan`
+--
+ALTER TABLE `tagihan`
+  ADD CONSTRAINT `tagihan_ibfk_1` FOREIGN KEY (`id_group`) REFERENCES `data_group` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

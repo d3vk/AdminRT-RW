@@ -18,10 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php
     
     $data = SiteController::getStatusBayar();
-    $tagihan1 = $data['kebersihan'];
-    $tagihan2 = $data['keamanan'];
+    $tagihan1 = $data['1'];
+    $tagihan2 = $data['2'];
+    $tagihan3 = $data['3'];
 
-    if ($tagihan1 == "Terbayar" && $tagihan2 == "Terbayar") {
+    if ($tagihan1 == "Terbayar" && $tagihan2 == "Terbayar" && $tagihan3 == "Terbayar") {
         echo "<div class='alert alert-success' role='alert'>
     <b>Terimakasih telah melakukan pembayaran</b></div>";
     } else {
@@ -46,17 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
             // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-    <?php
-    $sum = Tagihan::getSum();
-    if ($tagihan1 == "Terbayar" && $tagihan2 == "Terbayar") {
-        echo "<div class='alert alert-light' role='alert'>
-    <h3>Jumlah Tagihan Anda <b>Rp0</b></h3></div>";
-    } else {
-        echo "<div class='alert alert-light' role='alert'>
-    <h3>Jumlah Tagihan Anda <b>Rp" . $sum . "</b></h3></div>";
-    }
-    ?>
 
 
 </div>

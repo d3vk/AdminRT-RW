@@ -17,15 +17,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'no_kk') ?>
-
-    <?= $form->field($model, 'kepala_keluarga') ?>
+    <?= $form->field($model, 'nik') ?>
 
     <?= $form->field($model, 'tanggal') ?>
 
     <?= $form->field($model, 'wilayah_lama') ?>
 
-    <?php // echo $form->field($model, 'wilayah_baru') ?>
+    <?= $form->field($model, 'wilayah_baru') ?>
 
     <?php // echo $form->field($model, 'group_lama') ?>
 

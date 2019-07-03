@@ -12,9 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'no_kk')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'kepala_keluarga')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nik')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'tanggal')->textInput() ?>
 
@@ -26,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'group_baru')->textInput() ?>
 
-    <?= $form->field($model, 'approval')->dropDownList(['Proses Mutasi' => 'Proses Mutasi', 'Aktif' => 'Aktif']) ?>
+    <?= $form->field($model, 'approval')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

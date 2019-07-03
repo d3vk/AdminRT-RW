@@ -3,14 +3,12 @@
 namespace app\models;
 
 use Yii;
-use yii\db\CDbCriteria;
 
 /**
  * This is the model class for table "mutasi".
  *
  * @property int $id
- * @property string $no_kk
- * @property string $kepala_keluarga
+ * @property string $nik
  * @property string $tanggal
  * @property string $wilayah_lama
  * @property string $wilayah_baru
@@ -18,8 +16,8 @@ use yii\db\CDbCriteria;
  * @property int $group_baru
  * @property string $approval
  *
- * @property KartuKeluarga $noKk
  * @property StatusKk $approval0
+ * @property Pengguna $nik0
  */
 class Mutasi extends \yii\db\ActiveRecord
 {
@@ -37,15 +35,14 @@ class Mutasi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['no_kk', 'kepala_keluarga', 'tanggal', 'wilayah_lama', 'wilayah_baru', 'group_lama', 'group_baru', 'approval'], 'required'],
+            [['nik', 'tanggal', 'wilayah_lama', 'wilayah_baru', 'group_lama', 'group_baru', 'approval'], 'required'],
             [['tanggal'], 'safe'],
             [['group_lama', 'group_baru'], 'integer'],
-            [['no_kk'], 'string', 'max' => 16],
-            [['kepala_keluarga'], 'string', 'max' => 255],
+            [['nik'], 'string', 'max' => 16],
             [['wilayah_lama', 'wilayah_baru'], 'string', 'max' => 7],
             [['approval'], 'string', 'max' => 15],
-            [['no_kk'], 'exist', 'skipOnError' => true, 'targetClass' => KartuKeluarga::className(), 'targetAttribute' => ['no_kk' => 'no_kk']],
             [['approval'], 'exist', 'skipOnError' => true, 'targetClass' => StatusKk::className(), 'targetAttribute' => ['approval' => 'keterangan']],
+            [['nik'], 'exist', 'skipOnError' => true, 'targetClass' => Pengguna::className(), 'targetAttribute' => ['nik' => 'nik']],
         ];
     }
 
@@ -56,8 +53,7 @@ class Mutasi extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'no_kk' => 'Nomor KK',
-            'kepala_keluarga' => 'Kepala Keluarga',
+            'nik' => 'Nik',
             'tanggal' => 'Tanggal',
             'wilayah_lama' => 'Wilayah Lama',
             'wilayah_baru' => 'Wilayah Baru',
@@ -70,17 +66,17 @@ class Mutasi extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNoKk()
+    public function getApproval0()
     {
-        return $this->hasOne(KartuKeluarga::className(), ['no_kk' => 'no_kk']);
+        return $this->hasOne(StatusKk::className(), ['keterangan' => 'approval']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getApproval0()
+    public function getNik0()
     {
-        return $this->hasOne(StatusKk::className(), ['keterangan' => 'approval']);
+        return $this->hasOne(Pengguna::className(), ['nik' => 'nik']);
     }
 
     public function getStatus()
@@ -88,15 +84,12 @@ class Mutasi extends \yii\db\ActiveRecord
         // $criteria = new CDbCriteria;
         // $criteria->select='max(id) as id';
         // $model = Mutasi::find($criteria);
-        $model = Mutasi::find()->where(['no_kk' => Yii::$app->user->identity->no_kk])->orderBy(['id' => SORT_DESC])->one();
+        $model = Mutasi::find()->where(['nik' => Yii::$app->user->identity->nik])->orderBy(['id' => SORT_DESC])->one();
         // var_dump($model);
-
         if (!$model) {
             return "Aktif";
-        }
-        else {
+        } else {
             return $model->approval;
         }
-        
     }
 }

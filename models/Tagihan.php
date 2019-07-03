@@ -82,10 +82,12 @@ class Tagihan extends \yii\db\ActiveRecord
         $model = Tagihan::find()->where(['id_group' => Yii::$app->user->identity->id_group])->all();
         $model1 = ArrayHelper::getValue($model, '0.status');
         $model2 = ArrayHelper::getValue($model, '1.status');
+        $model3 = ArrayHelper::getValue($model, '2.status');
         // var_dump($model1);
         // var_dump($model2);
-        $out['kebersihan'] = $model1;
-        $out['keamanan'] = $model2;
+        $out['1'] = $model1;
+        $out['2'] = $model2;
+        $out['3'] = $model3;
 
         return $out;
         // var_dump($model);
