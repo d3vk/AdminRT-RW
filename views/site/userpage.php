@@ -133,7 +133,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'url' => '#',
                         'label' => 'Home (' . $nik . ')',
-                        'icon' => 'home'
+                        'icon' => 'home',
+                        'active' => ($item == 'site')
                     ], [
                         'url' => 'index.php?r=site%2Fview-member',
                         'label' => 'Lihat Anggota',

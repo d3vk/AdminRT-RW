@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AnggotaKeluargaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Buat Anggota Keluarga';
+$this->title = 'Anggota Keluarga';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="anggota-keluarga-index">
