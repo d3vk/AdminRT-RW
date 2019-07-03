@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\CDbCriteria;
 
 /**
  * This is the model class for table "mutasi".
@@ -84,7 +85,10 @@ class Mutasi extends \yii\db\ActiveRecord
 
     public function getStatus()
     {
-        $model = Mutasi::find()->where(['no_kk' => Yii::$app->user->identity->no_kk])->one();
+        // $criteria = new CDbCriteria;
+        // $criteria->select='max(id) as id';
+        // $model = Mutasi::find($criteria);
+        $model = Mutasi::find()->where(['no_kk' => Yii::$app->user->identity->no_kk])->orderBy(['id' => SORT_DESC])->one();
         // var_dump($model);
 
         if (!$model) {

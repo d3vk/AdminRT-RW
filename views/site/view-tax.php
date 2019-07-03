@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php
+    
     $data = SiteController::getStatusBayar();
     $tagihan1 = $data['kebersihan'];
     $tagihan2 = $data['keamanan'];
@@ -40,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'no_kk',
             'deskripsi',
             'tagihan',
-            //'status',
+            'status',
 
             // ['class' => 'yii\grid\ActionColumn'],
         ],

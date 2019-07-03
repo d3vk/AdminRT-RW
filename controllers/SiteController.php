@@ -181,7 +181,7 @@ class SiteController extends Controller
         $model = new Mutasi();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('index.php?r=site%2Flogin');
+            return $this->redirect('index.php?r=site%2Fuserpage');
         }
 
         return $this->render('reqmutasi', [
